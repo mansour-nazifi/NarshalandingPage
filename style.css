@@ -4,6 +4,22 @@
    ============================================================ */
 
 /* =================== CSS CUSTOM PROPERTIES =================== */
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-display: swap;
+    font-weight: normal;
+    src: url("fonts/IRANSans/IRANSansWeb.woff2") format("woff2"), url("fonts/IRANSans/IRANSansWeb.woff") format("woff");
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-display: swap;
+    font-weight: bold;
+    src: url("fonts/IRANSans/IRANSansWeb_Bold.woff2") format("woff2"), url("fonts/IRANSans/IRANSansWeb_Bold.woff") format("woff");
+}
+
 :root {
     --color-black: #0a0a0a;
     --color-black-light: #111111;
@@ -22,7 +38,7 @@
     --color-red-light: #dc2626;
     --color-cream: #fef3c7;
     --color-green: #22c55e;
-    --font-primary: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+    --font-primary: 'IRANSans', system-ui, -apple-system, sans-serif;
     --container-max: 1200px;
     --container-padding: 1.5rem;
     --header-height: 80px;
@@ -1393,6 +1409,10 @@ button {
     .reveal-element.revealed {
         opacity: 1;
         transform: translateY(0);
+    }
+
+    .reveal-element.instagram {
+        grid-column: 1 / -1;
     }
 
 /* Stagger delays for grid children */
