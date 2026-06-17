@@ -1194,7 +1194,7 @@ button {
     overflow: hidden;
 }
 
-    /*.map-placeholder::before {
+/*.map-placeholder::before {
         content: '';
         position: absolute;
         inset: 0;
@@ -1434,6 +1434,10 @@ button {
 
 .services-grid .reveal-element:nth-child(5) {
     transition-delay: 0.4s;
+}
+
+.services-grid .reveal-element:nth-child(6) {
+    transition-delay: 0.5s;
 }
 
 .portfolio-grid .reveal-element:nth-child(2) {
