@@ -1194,13 +1194,13 @@ button {
     overflow: hidden;
 }
 
-    .map-placeholder::before {
+    /*.map-placeholder::before {
         content: '';
         position: absolute;
         inset: 0;
         background: linear-gradient(rgba(212,160,23,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(212,160,23,0.03) 1px, transparent 1px);
         background-size: 40px 40px;
-    }
+    }*/
 
 .map-inner {
     text-align: center;

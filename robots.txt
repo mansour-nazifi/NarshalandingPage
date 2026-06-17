@@ -3,12 +3,7 @@
 
 User-agent: *
 Allow: /
-Allow: /index.html
-
-# Block access to admin or sensitive directories
-Disallow: /admin/
-Disallow: /private/
-Disallow: /tmp/
+Allow: /index.html 
 
 # Sitemap
 Sitemap: https://narsha.ir/sitemap.xml
