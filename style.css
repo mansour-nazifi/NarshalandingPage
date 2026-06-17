@@ -1342,7 +1342,7 @@ button {
 .scroll-top {
     position: fixed;
     bottom: 100px;
-    left: 24px;
+    left: 28px;
     width: 48px;
     height: 48px;
     display: flex;
