@@ -219,7 +219,7 @@ button {
 
 .logo-svg {
     height: 80px;
-    width: auto;    
+    width: auto;
 }
 
 /* Logo Styles */
@@ -1139,6 +1139,10 @@ button {
 .instagram-icon {
     background: linear-gradient(135deg, rgba(131,58,180,0.1), rgba(253,29,29,0.1), rgba(252,176,69,0.1));
     color: #e1306c;
+}
+
+.reveal-element.instagram p {
+    direction: ltr;
 }
 
 .contact-card h3 {
