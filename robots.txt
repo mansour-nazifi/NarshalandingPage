@@ -1,0 +1,17 @@
+# Robots.txt - مزون نارشا
+# https://narsha.ir/robots.txt
+
+User-agent: *
+Allow: /
+Allow: /index.html
+
+# Block access to admin or sensitive directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /tmp/
+
+# Sitemap
+Sitemap: https://narsha.ir/sitemap.xml
+
+# Crawl delay (optional, for polite crawling)
+Crawl-delay: 5
