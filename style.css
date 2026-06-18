@@ -525,7 +525,7 @@ button {
 .hero-image-wrapper {
     position: relative;
     width: 380px;
-    height: 520px;
+    height: 634px;
     border-radius: var(--radius-lg);
     overflow: hidden;
 }
