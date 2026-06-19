@@ -191,6 +191,28 @@
     /* =================== LIGHTBOX =================== */
     var portfolioImages = [];
 
+    /* =================== FAQ ACCORDION =================== */
+    function setupFAQAccordion() {
+        var questions = document.querySelectorAll('.faq-question');
+        questions.forEach(function (q) {
+            q.addEventListener('click', function () {
+                var expanded = this.getAttribute('aria-expanded') === 'true';
+                // close all
+                questions.forEach(function (other) {
+                    other.setAttribute('aria-expanded', 'false');
+                    var ans = other.nextElementSibling;
+                    if (ans) ans.hidden = true;
+                });
+
+                if (!expanded) {
+                    this.setAttribute('aria-expanded', 'true');
+                    var answer = this.nextElementSibling;
+                    if (answer) answer.hidden = false;
+                }
+            });
+        });
+    }
+
     function initPortfolioData() {
         portfolioItems.forEach(function (item, index) {
             var img = item.querySelector('.portfolio-img');
@@ -381,6 +403,7 @@
         setupRevealObserver();
         setupStatsObserver();
         setupLazyLoading();
+        setupFAQAccordion();
         handleHeaderScroll();
         updateActiveNavLink();
     }

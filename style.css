@@ -12,6 +12,41 @@
     src: url("fonts/IRANSans/IRANSansWeb.woff2") format("woff2"), url("fonts/IRANSans/IRANSansWeb.woff") format("woff");
 }
 
+/* =================== FAQ SECTION =================== */
+.faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    gap: 12px;
+}
+
+.faq-item {
+    background: var(--color-dark-card);
+    border: 1px solid var(--color-dark-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: right;
+    padding: 18px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-white);
+    background: linear-gradient(90deg, rgba(212,160,23,0.03), transparent);
+}
+
+.faq-answer {
+    padding: 16px 20px;
+    color: var(--color-gray-light);
+    line-height: 1.9;
+}
+
+.faq-question[aria-expanded="true"] {
+    background: linear-gradient(90deg, rgba(212,160,23,0.06), transparent);
+}
+
 @font-face {
     font-family: IRANSans;
     font-style: normal;
