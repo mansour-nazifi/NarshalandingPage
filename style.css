@@ -252,7 +252,7 @@ button {
     z-index: 1001;
 }
 
-.logo-svg {
+.logo-img {
     height: 80px;
     width: auto;
 }
@@ -283,7 +283,7 @@ button {
 .logo-tagline {
     font-size: 0.6rem;
     font-weight: 400;
-    color: var(--color-gray);
+    color: var(--color-white);
     letter-spacing: 1px;
 }
 
@@ -1275,7 +1275,7 @@ button {
     margin-bottom: 16px;
 }
 
-.footer-logo-svg {
+.footer-logo-img {
     height: 42px;
 }
 
