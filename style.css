@@ -1633,6 +1633,10 @@ button {
         display: flex;
     }
 
+    .logo-img {
+        padding: 5px;
+    }
+
     .nav-list {
         position: fixed;
         inset: 0;
