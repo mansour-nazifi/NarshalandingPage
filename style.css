@@ -229,13 +229,13 @@ button {
     right: 0;
     z-index: 1000;
     height: var(--header-height);
-    transition: background-color var(--transition-normal), box-shadow var(--transition-normal), backdrop-filter var(--transition-normal);
+    transition: background-color var(--transition-normal), box-shadow var(--transition-normal)/*, backdrop-filter var(--transition-normal)*/;
 }
 
     .header.scrolled {
         background-color: rgba(10, 10, 10, 0.92);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        /*backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);*/
         box-shadow: 0 1px 0 rgba(212, 160, 23, 0.15);
     }
 
