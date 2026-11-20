@@ -1,0 +1,32 @@
+﻿@model IReadOnlyList<NarshaStaticSite.Models.LightboxItem>
+<div class="modal fade lightbox" id="lightbox" tabindex="-1" aria-label="نمایش تصویر بزرگ نمونه‌کار" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen m-0">
+        <div class="modal-content bg-transparent border-0 h-100">
+            <div class="modal-body p-0 position-relative h-100">
+                <button type="button" class="lightbox-close btn p-0 border-0" data-bs-dismiss="modal" aria-label="بستن پنجره تصویر">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-gold"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+                </button>
+                <button type="button" class="lightbox-nav lightbox-prev btn p-0 border-0" data-bs-target="#lightboxCarousel" data-bs-slide="prev" aria-label="تصویر قبلی">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-gold"><polyline points="15 18 9 12 15 6" /></svg>
+                </button>
+                <button type="button" class="lightbox-nav lightbox-next btn p-0 border-0" data-bs-target="#lightboxCarousel" data-bs-slide="next" aria-label="تصویر بعدی">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-gold"><polyline points="9 18 15 12 9 6" /></svg>
+                </button>
+                <div id="lightboxCarousel" class="carousel slide h-100" data-bs-ride="false" data-bs-interval="false" data-bs-touch="true">
+                    <div class="carousel-inner h-100">
+                        @for (var i = 0; i < Model.Count; i++)
+                        {
+                            var item = Model[i];
+                            <div class="carousel-item h-100@(i == 0 ? " active" : "")">
+                                <div class="lightbox-content d-flex flex-column align-items-center justify-content-center h-100 w-100 mx-auto">
+                                    <img src="@item.Image" alt="@item.Alt" class="lightbox-img d-block">
+                                    <p class="lightbox-caption mb-0 mt-3">@item.Name</p>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

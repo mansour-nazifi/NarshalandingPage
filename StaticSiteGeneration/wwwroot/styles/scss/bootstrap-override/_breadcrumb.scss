@@ -1,0 +1,9 @@
+// Breadcrumb overrides
+
+.breadcrumb {
+  --#{$prefix}breadcrumb-divider-color: #{$breadcrumb-divider-color};
+}
+
+.breadcrumb-item.active {
+  color: $breadcrumb-active-color;
+}

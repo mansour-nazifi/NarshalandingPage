@@ -1,0 +1,18 @@
+﻿@model NarshaStaticSite.Models.PortfolioItemData
+@{
+    var m = Model.Item;
+}
+<div class="col reveal-element">
+    <div class="portfolio-item position-relative overflow-hidden w-100 h-100" data-bs-toggle="modal" data-bs-target="#lightbox" data-bs-slide-to="@Model.Index" role="button" tabindex="0">
+        <div class="card-image-wrap">
+            <img src="@m.Image" alt="@m.Alt" width="400" height="600" loading="lazy" class="portfolio-img w-100 h-100 object-fit-cover">
+        </div>
+        <div class="portfolio-overlay d-flex flex-column justify-content-end position-absolute top-0 start-0 w-100 h-100 p-3 p-md-4">
+            <span class="portfolio-category">@m.Category</span>
+            <h3 class="portfolio-name h5">@m.Name</h3>
+            <button type="button" class="portfolio-zoom d-flex align-items-center justify-content-center position-absolute border-0 p-0" tabindex="-1" aria-hidden="true">
+                @Html.Raw(NarshaStaticSite.Data.HomeData.Icons.ZoomIn)
+            </button>
+        </div>
+    </div>
+</div>

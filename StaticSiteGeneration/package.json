@@ -1,0 +1,23 @@
+{
+  "name": "narsha-static-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Build tooling for the Narsha static site (Bootstrap 5.3.3 SCSS sources + RTL conversion).",
+  "scripts": {
+    "build:css": "sass wwwroot/styles/scss/site.scss wwwroot/styles/site.css --load-path=node_modules --no-source-map --style=compressed --quiet-deps",
+    "build:rtl": "node scripts/build-rtl.js",
+    "build:js": "node scripts/build-js.js",
+    "build:styles": "npm run build:css && npm run build:rtl",
+    "build:assets": "npm run build:styles && npm run build:js"
+  },
+  "dependencies": {
+    "bootstrap": "5.3.3"
+  },
+  "devDependencies": {
+    "cssnano": "^7.0.6",
+    "eslint": "^10.15.0",
+    "rtlcss": "4.3.0",
+    "sass": "1.77.8",
+    "terser": "^5.51.2"
+  }
+}

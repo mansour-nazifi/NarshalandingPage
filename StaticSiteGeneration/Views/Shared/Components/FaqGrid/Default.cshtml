@@ -1,0 +1,20 @@
+@model IReadOnlyList<NarshaStaticSite.Models.FaqItem>
+@{
+    var uid = "faq-" + Guid.NewGuid().ToString("N").Substring(0, 8);
+}
+<div class="faq-grid accordion d-grid gap-3 w-100 mx-auto" id="@uid">
+    @for (var i = 0; i < Model.Count; i++)
+    {
+        var f = Model[i];
+        var collapseId = uid + "-c" + i;
+        var headingId = uid + "-h" + i;
+        <div class="faq-item accordion-item w-100 border-0" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 class="accordion-header m-0" id="@headingId" itemprop="name">
+                <button type="button" class="faq-question accordion-button collapsed w-100 text-break py-3 px-4" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="false" aria-controls="@collapseId">@f.Question</button>
+            </h3>
+            <div id="@collapseId" class="faq-answer accordion-collapse collapse w-100" aria-labelledby="@headingId" data-bs-parent="#@uid" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <div class="faq-answer-body accordion-body p-3 px-4" itemprop="text">@Html.Raw(f.AnswerHtml)</div>
+            </div>
+        </div>
+    }
+</div>

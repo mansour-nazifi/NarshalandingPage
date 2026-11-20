@@ -1,0 +1,26 @@
+@model NarshaStaticSite.Models.ServiceCardListData
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    @{ var idx = 1; }
+    @foreach (var item in Model.Items)
+    {
+        <div class="col d-flex reveal-element">
+            <article class="card narsha-card h-100 w-100" tabindex="0">
+                <div class="card-body">
+                    <div class="service-icon d-flex align-items-center justify-content-center flex-shrink-0 mb-3" aria-hidden="true">
+                        @if (Model.Numbered)
+                        {
+                            <span class="service-number">@idx</span>
+                        }
+                        else
+                        {
+                            @Html.Raw(item.IconSvg)
+                        }
+                    </div>
+                    <h3 class="card-title service-title h5 mb-2">@item.Title</h3>
+                    <p class="card-text service-desc mb-0">@item.Description</p>
+                </div>
+            </article>
+        </div>
+        idx++;
+    }
+</div>

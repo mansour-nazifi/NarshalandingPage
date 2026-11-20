@@ -1,0 +1,20 @@
+@model List<BreadcrumbItem>
+<nav aria-label="breadcrumb" class="py-3">
+    <ol class="breadcrumb mb-0">
+    @for (var i = 0; i < Model.Count; i++)
+    {
+        var item = Model[i];
+        var isLast = i == Model.Count - 1;
+        <li class="breadcrumb-item@(isLast || string.IsNullOrEmpty(item.Href) ? " active" : "")"@(isLast || string.IsNullOrEmpty(item.Href) ? " aria-current=\"page\"" : "")>
+            @if (isLast || string.IsNullOrEmpty(item.Href))
+            {
+                @item.Title
+            }
+            else
+            {
+                <a href="@item.Href">@item.Title</a>
+            }
+        </li>
+    }
+    </ol>
+</nav>

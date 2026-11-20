@@ -1,0 +1,42 @@
+// Typography overrides
+// Global body font is set once in styles/_base.scss.
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: $headings-font-weight;
+  color: $white;
+}
+
+.lead {
+  color: $gray-light;
+}
+
+.text-muted {
+  color: $text-muted !important;
+}
+
+// --- Preserve the project's spacing ---------------------------------
+// styles/style.css uses a universal `*{ margin:0; padding:0 }` reset, which
+// has lower specificity than Bootstrap's element-level rules. Re-neutralize
+// those base rules here so the existing look is not altered. Class-based
+// utilities (.mb-*, .p-*, ...) still win because they are more specific.
+p,
+h1, h2, h3, h4, h5, h6,
+blockquote,
+figure,
+pre,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg {
+  vertical-align: baseline;
+}

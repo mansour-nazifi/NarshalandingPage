@@ -1,0 +1,411 @@
+// ============================================================
+//  Sections: hero, about, services, category cards, portfolio,
+//  payment, contact, category hero, CTA
+// ============================================================
+
+// ---- Hero ------------------------------------------------------
+.hero {
+  background: linear-gradient(135deg, $black 0%, #0f0f0f 50%, #1a1a10 100%);
+}
+
+.hero-overlay {
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 80% 50%, rgba(212, 160, 23, .06) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(185, 28, 28, .04) 0%, transparent 50%);
+} 
+
+.hero-badge {
+  display: inline-block;
+  color: $gold;
+  background: rgba(212, 160, 23, .05);
+  border: 1px solid rgba(212, 160, 23, .3);
+  border-radius: 50px;
+} 
+
+.hero-title-line {
+  display: block;
+
+  &:nth-child(1) { color: $white; }
+
+  &.gold {
+    background: linear-gradient(135deg, $gold-light, $gold, $gold-dark);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.hero-subtitle {
+  max-width: 500px;
+  color: $gray-light;
+}
+ 
+.hero-image-wrapper {
+  width: 340px;
+  height: 510px;
+  border-radius: $border-radius-lg;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: $border-radius-lg;
+}
+
+.hero-image-frame {
+  position: absolute;
+  inset: -8px;
+  pointer-events: none;
+  border: 2px solid rgba(212, 160, 23, .3);
+  border-radius: calc(#{$border-radius-lg} + 4px);
+}
+
+.hero-image-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: $border-radius-lg;
+  background: linear-gradient(180deg, transparent 60%, rgba(10, 10, 10, .8) 100%);
+}
+
+
+
+// ---- Category hero (inner pages) ------------------------------
+.category-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 50vh;
+  background: linear-gradient(135deg, $black 0%, #0f0f0f 50%, #1a1a10 100%);
+
+  .hero-overlay {
+    pointer-events: none;
+    background: radial-gradient(ellipse at 80% 50%, rgba(212, 160, 23, .06) 0%, transparent 60%);
+  }
+
+  .hero-subtitle { max-width: 700px; }
+  .hero-buttons { justify-content: center; }
+}
+
+// ---- About ----------------------------------------------------- 
+.about-img-main {
+  position: relative;
+  overflow: hidden;
+  border-radius: $border-radius-lg;
+  box-shadow: $box-shadow-lg;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    transition: transform .8s ease;
+    will-change: transform;
+  }
+
+  &:hover img { transform: scale(1.05); }
+}
+
+.about-img-secondary {
+  position: absolute;
+  inset-block-end: -30px;
+  inset-inline-start: -30px;
+  width: 200px;
+  overflow: hidden;
+  border: 4px solid $black;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+
+  img { width: 100%; height: 150px; object-fit: cover; display: block; }
+}
+
+.about-experience-badge {
+  position: absolute;
+  inset-block-start: -20px;
+  inset-inline-start: 20px;
+  color: $black;
+  text-align: center;
+  background: linear-gradient(135deg, $gold, $gold-dark);
+  border-radius: $border-radius;
+  box-shadow: 0 4px 20px rgba(212, 160, 23, .3);
+}
+
+.badge-number { display: block; font-weight: 700; }
+.badge-text { display: block; font-weight: 700; }
+
+.about-heading {
+  color: $gold;
+}
+
+.about-text { color: $gray-light; }
+
+.value-item {
+  background: rgba(212, 160, 23, .03);
+  border: 1px solid rgba(212, 160, 23, .08);
+  border-radius: $border-radius;
+  transition: all $narsha-transition;
+
+  &:hover {
+    background: rgba(212, 160, 23, .06);
+    border-color: rgba(212, 160, 23, .15);
+    transform: translateX(5px);
+  }
+
+  strong { display: block; color: $white; }
+  p { color: $gray; }
+}
+
+.value-icon {
+  width: 48px;
+  height: 48px;
+  color: $gold;
+  background: rgba(212, 160, 23, .1);
+  border-radius: $border-radius-sm;
+}
+
+// ---- Service card ---------------------------------------------
+.service-icon {
+  width: 72px;
+  height: 72px;
+  background: rgba(212, 160, 23, .06);
+  border: 1px solid rgba(212, 160, 23, .1);
+  border-radius: $border-radius;
+}
+
+.service-number { font-weight: 700; color: $gold; }
+
+.service-title { color: $white; }
+.service-desc { color: $gray; }
+
+// ---- Category / sewing card (uses .card.narsha-card) ----------
+.narsha-card .card-title { color: $white; }
+.narsha-card .card-text { color: $gray; }
+
+.narsha-link {
+  font-weight: 700;
+  color: $gold;
+  transition: all .2s ease;
+
+  svg { transform: rotate(180deg); }
+  &:hover { color: $gold-light; gap: .75rem !important; }
+}
+
+.price-tag {
+  display: block;
+  font-weight: 700;
+  color: $gold;
+  text-align: center;
+  background: rgba(212, 160, 23, .1);
+  border: 1px solid rgba(212, 160, 23, .2);
+  border-radius: $border-radius-sm;
+}
+
+// ---- Portfolio -------------------------------------------------
+.portfolio-item {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: $border-radius;
+  cursor: pointer;
+}
+
+.portfolio-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s ease;
+  will-change: transform;
+}
+
+.portfolio-overlay {
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(10, 10, 10, .9) 100%);
+  transition: opacity $narsha-transition;
+}
+
+.portfolio-item:hover .portfolio-overlay { opacity: 1; }
+.portfolio-item:hover .portfolio-img { transform: scale(1.08); }
+
+  .portfolio-category { color: $gold; }
+  .portfolio-name { color: $white; }
+
+.portfolio-zoom {
+  inset-block-start: 16px;
+  inset-inline-start: 16px;
+  width: 44px;
+  height: 44px;
+  color: $black;
+  background: rgba(212, 160, 23, .9);
+  border-radius: 50%;
+  transform: scale(0) rotate(-90deg);
+  transition: transform $narsha-transition;
+}
+
+.portfolio-item:hover .portfolio-zoom { transform: scale(1) rotate(0); }
+
+.product-list-desc {
+  display: none;
+}
+
+@media (max-width: 575.98px) {
+  .product-list-card {
+    align-items: stretch;
+
+    .card-image-wrap {
+      width: 30%;
+      max-width: 140px;
+      flex-shrink: 0;
+      aspect-ratio: 3 / 4;
+      height: auto;
+    }
+
+    .product-list-img {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      flex-shrink: 0;
+      object-fit: cover;
+      border-start-start-radius: var(--bs-card-inner-border-radius, #{$border-radius-lg});
+      border-end-start-radius: var(--bs-card-inner-border-radius, #{$border-radius-lg});
+      border-start-end-radius: 0;
+      border-end-end-radius: 0;
+    }
+
+    .card-body {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .product-list-desc {
+      display: -webkit-box;
+      overflow: hidden;
+      color: $gray-light;
+      font-size: .875rem;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+  }
+}
+
+// ---- Payment ---------------------------------------------------
+.payment-card {
+  position: relative;
+  height: 100%;
+  text-align: start;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  transition: all $narsha-transition;
+
+  &:hover { border-color: rgba(212, 160, 23, .2); }
+
+  &.featured {
+    background: linear-gradient(180deg, rgba(212, 160, 23, .04) 0%, $dark-card 100%);
+    border-color: rgba(212, 160, 23, .3);
+  }
+
+  &.featured::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $gold-dark, $gold, $gold-dark);
+  }
+}
+
+.payment-icon { }
+.payment-title { color: $white; }
+
+.payment-features {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: .875rem;
+  text-align: start;
+
+  li { display: flex; align-items: center; justify-content: flex-start; gap: .625rem; color: $gray-light; }
+}
+
+.payment-badge {
+  display: inline-flex;
+  align-self: center;
+  font-weight: 700;
+  color: $gray;
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: 50px;
+
+  &.gold { color: $gold; background: rgba(212, 160, 23, .15); border-color: rgba(212, 160, 23, .3); }
+}
+
+.payment-note {
+  gap: .875rem;
+  max-width: 600px;
+  background: rgba(212, 160, 23, .04);
+  border: 1px solid rgba(212, 160, 23, .1);
+  border-radius: $border-radius;
+
+  p { color: $gray-light; }
+}
+
+// ---- Contact ---------------------------------------------------
+.contact-card {
+  background: $dark;
+  border: 1px solid $dark-border;
+  border-radius: $border-radius;
+  transition: all $narsha-transition;
+
+  &:hover { border-color: rgba(212, 160, 23, .2); box-shadow: $box-shadow; }
+
+  h3 { color: $white; }
+}
+
+.contact-card-icon {
+  width: 56px;
+  height: 56px;
+  color: $gold;
+  background: rgba(212, 160, 23, .08);
+  border-radius: 50%;
+
+  &.whatsapp { color: #25d366; background: rgba(37, 211, 102, .1); }
+  &.instagram { color: #e1306c; background: linear-gradient(135deg, rgba(131,58,180,.1), rgba(253,29,29,.1), rgba(252,176,69,.1)); }
+}
+
+.contact-value { color: $gray-light; }
+.contact-action { font-weight: 700; color: $gold; }
+.contact-hours { color: $gray; }
+
+.contact-map { height: 100%; min-height: 300px; }
+
+.map-placeholder {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  overflow: hidden;
+  background: $dark;
+  border: 1px solid $dark-border;
+  border-radius: $border-radius;
+
+  iframe { display: block; width: 100%; height: 100%; border: 0; }
+}
+
+// ---- CTA / misc -----------------------------------------------
+.cta-section { max-width: 700px; }
+.cta-section-desc { color: $gray-light; }
+
+.category-intro-text {
+  color: $gray-light;
+  background: $dark-card;
+  border: 1px solid $dark-border;
+  border-radius: $border-radius;
+
+  a { color: $gold; font-weight: 700; &:hover { text-decoration: underline; } }
+}
+

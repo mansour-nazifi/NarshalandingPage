@@ -1,0 +1,66 @@
+// ============================================================
+//  Narsha - Base layer (fonts, brand tokens, element defaults)
+//  Bootstrap (site.rtl.css) is compiled before this file.
+// ============================================================
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-display: swap;
+  font-weight: normal;
+  src: url("../fonts/IRANSans/IRANSansWeb.woff2") format("woff2"),
+       url("../fonts/IRANSans/IRANSansWeb.woff") format("woff");
+}
+
+@font-face {
+  font-family: IRANSans;
+  font-style: normal;
+  font-display: swap;
+  font-weight: bold;
+  src: url("../fonts/IRANSans/IRANSansWeb_Bold.woff2") format("woff2"),
+       url("../fonts/IRANSans/IRANSansWeb_Bold.woff") format("woff");
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  // `clip` keeps `position: sticky` working (hidden would break it).
+  overflow-x: clip;
+}
+ 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  transition: color .2s ease;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+// button reset handled by Bootstrap reboot
+
+::selection {
+  background: $gold;
+  color: $black;
+}
+
+:focus-visible {
+  outline: 2px solid $gold;
+  outline-offset: 3px;
+}
+
+main {
+  position: relative;
+}
+
+// Brand helpers
+$narsha-transition: .35s ease !default;
+
+.text-gold { color: $gold !important; }
+.section-dark { background-color: $dark; }

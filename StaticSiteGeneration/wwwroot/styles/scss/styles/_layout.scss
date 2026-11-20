@@ -1,0 +1,363 @@
+// ============================================================
+//  Layout: header / navigation, footer, floating actions
+// ============================================================
+
+// ---- Top banner ------------------------------------------------
+.top-banner {
+  height: 36px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #c48a0a 0%, #e6b422 45%, #f0c94a 50%, #e6b422 55%, #c48a0a 100%);
+  border-bottom: 1px solid #a87408;
+}
+
+.top-banner-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #1a1408;
+  font-weight: 700;
+  text-decoration: none;
+
+  &:hover,
+  &:focus { color: #000; }
+}
+
+.top-banner-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  will-change: transform;
+  animation: topBannerSlideUp 6s cubic-bezier(.4, 0, .2, 1) infinite;
+}
+
+.top-banner-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  flex-shrink: 0;
+  width: 100%;
+  text-align: center;
+}
+
+@keyframes topBannerSlideUp {
+  0%, 42% { transform: translateY(0); }
+  50%, 92% { transform: translateY(-36px); }
+  100% { transform: translateY(-72px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-banner-track { animation: none; transform: translateY(0); }
+  .top-banner-text:not(:first-child) { display: none; }
+}
+
+// ---- Header ----------------------------------------------------
+.site-header {
+  position: sticky;
+  inset-block-start: 0;
+  z-index: 1030;
+  transition: background-color $narsha-transition, box-shadow $narsha-transition;
+
+  &:not(.scrolled) {
+    background-color: rgba(10, 10, 10, .92);
+  }
+
+  &.scrolled {
+    background-color: rgba(10, 10, 10, .98);
+    box-shadow: 0 1px 0 rgba(212, 160, 23, .15);
+  }
+}
+
+// ---- Nav (on top of Bootstrap .navbar) ------------------------
+.site-nav {
+  min-height: var(--narsha-header-height);
+  flex-wrap: nowrap;
+}
+
+.navbar-brand.logo {
+  display: flex;
+  align-items: center;
+  gap: .25rem;
+  min-width: 0;
+  color: $white;
+  font-size: 1rem;
+}
+
+.logo-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  height: 80px;
+  width: auto;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logo-brand {
+  font-weight: 700;
+background: linear-gradient(135deg, $gold-light, $gold, $gold-dark);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo-tagline {
+  color: $gray-light;
+  font-size: .75rem;
+}
+
+.navbar-nav {
+  align-items: center;
+  gap: .25rem;
+
+  .nav-link {
+    position: relative;
+    display: inline-block;
+    color: $gray-light;
+    border-radius: $border-radius-sm;
+    transition: color .2s ease, background-color .2s ease;
+
+    &:hover,
+    &:focus,
+    &.active {
+      color: $gold;
+    }
+
+    &.active::after {
+      content: '';
+      position: absolute;
+      inset-block-end: 2px;
+      inset-inline: 1rem;
+      height: 2px;
+      background: $gold;
+      border-radius: 2px;
+    }
+  }
+}
+
+// ---- Mobile menu (Bootstrap offcanvas, opens from the inline end) ----
+// Scoped to the mobile menu only; from lg up the offcanvas is a plain inline nav.
+@media (max-width: 991.98px) {
+  .nav-menu.offcanvas {
+    --bs-offcanvas-width: 290px;
+    --bs-offcanvas-bg: rgba(10, 10, 10, .98);
+    --bs-offcanvas-color: #{$white};
+    border-inline-start: 1px solid rgba(212, 160, 23, .18);
+    background-clip: padding-box;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    .offcanvas-header {
+      border-block-end: 1px solid rgba(212, 160, 23, .15);
+    }
+
+    .offcanvas-title {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
+      font-size: 1rem;
+    }
+
+    .offcanvas-title-tagline {
+      color: $gray;
+      font-size: .75rem;
+      font-weight: 400;
+    }
+
+    .btn-close {
+      opacity: .8;
+
+      &:focus { box-shadow: 0 0 0 .2rem rgba(212, 160, 23, .25); }
+    }
+
+    .offcanvas-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar-nav {
+      align-items: stretch;
+      gap: .125rem;
+      width: 100%;
+    }
+
+    .nav-item { width: 100%; }
+
+    .nav-link {
+      width: 100%;
+      border-radius: $border-radius-sm;
+
+      &.active {
+        color: $gold;
+        background: rgba(212, 160, 23, .08);
+
+        &::after { display: none; }
+      }
+    }
+  }
+}
+
+// ---- Mobile toggle --------------------------------------------
+.site-header .navbar-toggler {
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-color: $navbar-dark-toggler-border-color;
+  box-shadow: none;
+
+  &:focus {
+    outline: 2px solid $gold;
+    outline-offset: 3px;
+    box-shadow: none;
+  }
+
+  .navbar-toggler-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .site-header .navbar-toggler {
+    display: inline-flex;
+  }
+}
+
+// ---- Footer ----------------------------------------------------
+.site-footer {
+  background: $dark;
+  border-top: 1px solid $dark-border;
+}
+
+.footer-desc {
+  color: $gray;  
+}
+
+.footer-social {
+  gap: .75rem;
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: $gray;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 50%;
+    transition: all .2s ease;
+
+    &:hover {
+      color: $gold;
+      background: rgba(212, 160, 23, .1);
+      border-color: rgba(212, 160, 23, .3);
+    }
+  }
+}
+
+.footer-heading {
+  position: relative;
+  color: $white;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    width: 30px;
+    height: 2px;
+    background: $gold;
+    border-radius: 2px;
+  }
+}
+
+.footer-links {
+  a {
+    color: $gray;
+    transition: color .2s ease, padding-inline-start .2s ease;
+
+    &:hover {
+      color: $gold;
+      padding-inline-start: .5rem;
+    }
+  }
+}
+
+.footer-contact {
+  li {
+    color: $gray;
+  }
+
+  svg {
+    flex-shrink: 0;
+    color: $gold;
+  }
+}
+
+.footer-bottom {
+  color: $gray;
+}
+
+// ---- Floating actions -----------------------------------------
+.scroll-top {
+  position: fixed;
+  inset-block-end: 100px;
+  inset-inline-start: 28px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: $black;
+  background: $gold;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(212, 160, 23, .3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all $narsha-transition;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(212, 160, 23, .5);
+  }
+}
+
+.whatsapp-float {
+  position: fixed;
+  inset-block-end: 24px;
+  inset-inline-start: 24px;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  border-radius: 50%;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, .4);
+  transition: all $narsha-transition;
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, .5);
+  }
+}

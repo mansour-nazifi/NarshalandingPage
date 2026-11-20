@@ -1,0 +1,7 @@
+@model (NarshaStaticSite.Models.SectionHeaderData Header, List<NarshaStaticSite.Models.FaqItem> Items, string SectionId, string CssClass)
+<section class="@Model.CssClass" id="@Model.SectionId" aria-labelledby="@(Model.Header.TitleId ?? "faq-title")" itemscope itemtype="https://schema.org/FAQPage">
+    <div class="container">
+        @await Component.InvokeAsync("SectionHeader", Model.Header)
+        @await Component.InvokeAsync("FaqGrid", Model.Items)
+    </div>
+</section>

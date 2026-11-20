@@ -1,0 +1,80 @@
+@model NarshaStaticSite.ViewModels.LayoutViewModel
+<div class="container">
+    @await Component.InvokeAsync("Breadcrumb", new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("صفحه اصلی", SiteRoutes.Home),
+        new BreadcrumbItem("دوخت سفارشی")
+    })
+</div>
+<section class="category-hero position-relative d-flex align-items-center py-5" aria-labelledby="custom-sewing-hero-title">
+    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    <div class="container position-relative text-center">
+        <span class="hero-badge d-inline-block mb-4 py-2 px-3" aria-hidden="true">مزون نارشا • اردبیل</span>
+        <h1 id="custom-sewing-hero-title" class="hero-title mb-3">
+            <span class="hero-title-line">دوخت سفارشی لباس زنانه</span>
+            <span class="hero-title-line gold">راهنما، رویکرد و روند سفارش</span>
+        </h1>
+        <p class="hero-subtitle mx-auto mb-4">از انتخاب پارچه و تناسب اندام تا مراحل اجرا و تحویل، با آگاهی کامل سفارش دوخت سفارشی خود را ثبت کنید.</p>
+        <div class="hero-buttons d-flex flex-wrap justify-content-center gap-3 mt-4 mb-0">
+            <a href="#guidance" class="btn btn-gold">مشاهده راهنما <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg></a>
+            <a href="@SiteContact.BaleUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold">مشاوره در بله <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
+        </div>
+    </div>
+</section>
+
+@await Component.InvokeAsync("CustomSewingCategoryList")
+
+<!-- ============ FABRIC & FIT GUIDANCE ============ -->
+<section class="py-5 section-dark" id="guidance" aria-labelledby="guidance-title">
+    <div class="container">
+        @await Component.InvokeAsync("SectionHeader", new NarshaStaticSite.Models.SectionHeaderData(
+            "راهنمای دوخت سفارشی",
+            "پیش از ثبت سفارش",
+            "چه نکاتی را بدانیم",
+            Description: "برای رسیدن به لباسی که هم خوش‌فرم بنشیند و هم مطابق سلیقه شما باشد، چند نکته کلیدی درباره انتخاب پارچه، فرم اندام و فرآیند سفارش را بدانید.",
+            TitleId: "guidance-title"))
+        @await Component.InvokeAsync("InfoList", new List<NarshaStaticSite.Models.InfoItem>
+        {
+            new("انتخاب پارچه مناسب هر مدل", "پارچه‌های لطیف مانند کرپ، حریر و لینن برای شومیز و لباس مجلسی، پارچه‌های با ایستایی متعادل مانند فاستونی و کرپ برای کت، مانتو و دامن، و پارچه‌های ضخیم و گرم مانند پشم و فاستونی برای پالتو مناسب‌اند. پیش از برش، تناسب وزن و بافت پارچه با فرم مدل بررسی می‌شود."),
+            new("فرم اندام و تناسب", "عرض شانه، دور سینه، دور کمر و قد در الگوسازی اثر مستقیم دارند. انتخاب فرم یقه و برش بر اساس فرم اندام، فیت بهتری ایجاد می‌کند و لباس روی تن به‌درستی می‌نشود."),
+            new("سایزگیری حضوری و غیرحضوری", "برای بهترین فیت، سایزگیری و پرو حضوری در اردبیل توصیه می‌شود. برای مشتریان سایر شهرها، راهنمای اندازه‌گیری و هماهنگی غیرحضوری فراهم است."),
+            new("پارچه و ملزومات بر عهده مشتری", "هزینه‌های درج‌شده دستمزد دوخت هستند و پارچه، آستر، دکمه، زیپ و تزئینات توسط مشتری تأمین می‌شود. برای مشاهده مدل‌ها و قیمت پایه، دسته‌های دوخت سفارشی را مرور کنید."),
+        })
+    </div>
+</section>
+
+<!-- ============ WHY CHOOSE US SECTION ============ -->
+<section class="py-5" id="why-choose" aria-labelledby="why-choose-title">
+    <div class="container">
+        @await Component.InvokeAsync("SectionHeader", new NarshaStaticSite.Models.SectionHeaderData(
+            "چرا مزون نارشا",
+            "آنچه در دوخت سفارشی",
+            "برای ما مهم است",
+            Description: "دوخت سفارشی فقط انتخاب یک مدل نیست؛ نتیجه نهایی به اندازه‌گیری درست، الگوی متناسب، انتخاب پارچه و دقت در اجرا وابسته است.",
+            TitleId: "why-choose-title"))
+        @await Component.InvokeAsync("ServiceCardList", new { items = NarshaStaticSite.Data.HomeData.WhyChoose(), numbered = false })
+    </div>
+</section>
+
+<!-- ============ PROCESS SECTION ============ -->
+<section class="py-5 section-dark" id="process" aria-labelledby="process-title">
+    <div class="container">
+        @await Component.InvokeAsync("SectionHeader", new NarshaStaticSite.Models.SectionHeaderData(
+            "روند سفارش",
+            "مسیر",
+            "دوخت سفارشی",
+            TitleEnd: "در مزون نارشا",
+            Description: "فرآیند سفارش به‌صورت مرحله‌ای و شفاف انجام می‌شود تا نتیجه نهایی متناسب با انتظار و اندام شما باشد.",
+            TitleId: "process-title"))
+        @await Component.InvokeAsync("ServiceCardList", new { items = NarshaStaticSite.Data.HomeData.ProcessSteps(), numbered = true })
+    </div>
+</section>
+
+@{
+    var faqHeader = new NarshaStaticSite.Models.SectionHeaderData(
+        "سوال‌های رایج",
+        "پرسش‌های متداول درباره",
+        "دوخت سفارشی",
+        TitleId: "faq-title");
+}
+@await Html.PartialAsync("Partials/_FaqSection", (faqHeader, NarshaStaticSite.Data.SiteData.GlobalFaq(), "faq", "py-5"))

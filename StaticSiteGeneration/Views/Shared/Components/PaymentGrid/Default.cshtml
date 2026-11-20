@@ -1,0 +1,21 @@
+@model IReadOnlyList<NarshaStaticSite.Models.PaymentCardData>
+<div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">
+    @foreach (var card in Model)
+    {
+        <div class="col d-flex reveal-element">
+            <article class="payment-card d-flex flex-column h-100 w-100 p-4 p-lg-5@(card.Featured ? " featured" : "")">
+                <div class="payment-badge align-self-center mb-3 px-3 py-1@(card.Featured ? " gold" : "")">@card.Badge</div>
+                <div class="payment-icon mb-3" aria-hidden="true">
+                    @Html.Raw(card.IconSvg)
+                </div>
+                <h3 class="payment-title h5 mb-4">@card.Title</h3>
+                <ul class="payment-features list-unstyled flex-grow-1 text-start mb-0 ps-0">
+                    @foreach (var feature in card.Features)
+                    {
+                        <li class="d-flex align-items-center justify-content-start gap-2">@Html.Raw(NarshaStaticSite.Data.HomeData.Icons.CheckCircle) @feature.Text</li>
+                    }
+                </ul>
+            </article>
+        </div>
+    }
+</div>

@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/bin/
+/obj/
+/StaticSiteGeneration/obj
+/StaticSiteGeneration/bin/Debug/net10.0
+/StaticSiteGeneration/.vs
+/StaticSiteGeneration/static-output
+/StaticSiteGeneration/node_modules
+/StaticSiteGeneration/bin/Release/net10.0

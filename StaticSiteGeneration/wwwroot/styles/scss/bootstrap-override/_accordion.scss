@@ -1,0 +1,13 @@
+// Accordion overrides
+// Dark surface + gold accents via $accordion-* tokens in _variables.scss.
+
+.accordion {
+  --#{$prefix}accordion-bg: #{$accordion-bg};
+  --#{$prefix}accordion-color: #{$accordion-color};
+  --#{$prefix}accordion-border-color: #{$accordion-border-color};
+  --#{$prefix}accordion-button-color: #{$accordion-button-color};
+  --#{$prefix}accordion-button-active-bg: #{$accordion-button-active-bg};
+  --#{$prefix}accordion-button-active-color: #{$accordion-button-active-color};
+  --#{$prefix}accordion-icon-color: #{$accordion-icon-color};
+  --#{$prefix}accordion-icon-active-color: #{$accordion-icon-active-color};
+}

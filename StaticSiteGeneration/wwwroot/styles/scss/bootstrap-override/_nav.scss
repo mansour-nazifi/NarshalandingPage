@@ -1,0 +1,13 @@
+// Nav / nav-link overrides
+// Colours come from $nav-link-* tokens in _variables.scss.
+
+.nav-link:hover,
+.nav-link:focus {
+  color: $nav-link-hover-color;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: $primary;
+  color: $black;
+}

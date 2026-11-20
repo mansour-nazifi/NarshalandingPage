@@ -1,0 +1,59 @@
+﻿@model NarshaStaticSite.ViewModels.LayoutViewModel
+@{
+    var seo = Model?.Seo ?? new NarshaStaticSite.Models.SeoMeta("مزون نارشا", "", "/");
+    var active = Model?.ActiveNav ?? "";
+    var canonical = NarshaStaticSite.Data.SiteData.Domain + seo.CanonicalPath;
+}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@seo.Title</title>
+    <meta name="description" content="@seo.Description">
+    @if (!string.IsNullOrWhiteSpace(seo.Keywords)) { <meta name="keywords" content="@seo.Keywords"> }
+    <meta name="author" content="مزون نارشا">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="@canonical">
+    <link rel="alternate" href="@canonical" hreflang="fa-ir">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:type" content="@(seo.OgType ?? "website")">
+    <meta property="og:site_name" content="مزون نارشا">
+    <meta property="og:title" content="@seo.Title">
+    <meta property="og:description" content="@seo.Description">
+    <meta property="og:url" content="@canonical">
+    @if (!string.IsNullOrWhiteSpace(seo.OgImage)) { <meta property="og:image" content="@seo.OgImage"> }
+    @if (!string.IsNullOrWhiteSpace(seo.OgImageAlt)) { <meta property="og:image:alt" content="@seo.OgImageAlt"> }
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="@seo.Title">
+    <meta name="twitter:description" content="@seo.Description">
+    @if (!string.IsNullOrWhiteSpace(seo.OgImage)) { <meta name="twitter:image" content="@seo.OgImage"> }
+    @if (!string.IsNullOrWhiteSpace(seo.OgImageAlt)) { <meta name="twitter:image:alt" content="@seo.OgImageAlt"> }
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/fav/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/fav/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/fav/favicon-16x16.png">
+    <link rel="manifest" href="/icons/fav/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
+    @if (!string.IsNullOrWhiteSpace(seo.JsonLd)) { @Html.Raw(seo.JsonLd) }
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/IRANSans/IRANSansWeb.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/fonts/IRANSans/IRANSansWeb_Bold.woff2">
+    <link rel="stylesheet" href="/styles/site.rtl.css">
+</head>
+<body>
+    @await Html.PartialAsync("Partials/_Header", active)
+    <main>
+        @RenderBody()
+    </main>
+    @await Html.PartialAsync("Partials/_Footer", Model?.HomePage == true)
+    <button class="scroll-top" id="scrollTop" aria-label="بازگشت به بالای صفحه" hidden>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15" /></svg>
+    </button>
+    <a href="@SiteContact.BaleUrl" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="ارسال پیام در بله به مزون نارشا برای مشاوره رایگان" style="background:#00a859; box-shadow:0 4px 20px rgba(0,168,89,0.4);">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </a>
+    <script defer src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="/scripts/script.min.js"></script>
+    @if (Model?.IncludeCustomTailoringScript == true) { <script defer src="/scripts/custom-tailoring.min.js"></script> }
+</body>
+</html>

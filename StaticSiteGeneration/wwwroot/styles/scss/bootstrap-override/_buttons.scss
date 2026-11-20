@@ -1,0 +1,12 @@
+// Buttons overrides
+// Bootstrap's .btn already consumes $btn-* variables; keep brand focus styling.
+
+.btn svg {
+  vertical-align: middle;
+}
+
+.btn-check:focus + .btn,
+.btn:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 .2rem rgba(212, 160, 23, .35);
+}

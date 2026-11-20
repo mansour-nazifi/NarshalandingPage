@@ -1,0 +1,15 @@
+// Cards overrides
+// Card surface tokens are set in _variables.scss.
+
+.card {
+  --#{$prefix}card-bg: #{$card-bg};
+  --#{$prefix}card-color: #{$card-color};
+  --#{$prefix}card-border-color: #{$card-border-color};
+  --#{$prefix}card-cap-bg: #{$card-cap-bg};
+  --#{$prefix}card-border-radius: #{$card-border-radius};
+  overflow: hidden;
+}
+
+.card-header {
+  color: $gold-light;
+}

@@ -1,0 +1,52 @@
+﻿@model NarshaStaticSite.ViewModels.LayoutViewModel
+<div class="container">
+    @await Component.InvokeAsync("Breadcrumb", new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("صفحه اصلی", SiteRoutes.Home),
+        new BreadcrumbItem("تماس با ما")
+    })
+</div>
+<section class="category-hero position-relative d-flex align-items-center py-5" aria-labelledby="contact-hero-title">
+    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    <div class="container position-relative text-center">
+        <span class="hero-badge d-inline-block mb-4 py-2 px-3" aria-hidden="true">ارتباط با مزون نارشا</span>
+        <h1 id="contact-hero-title" class="hero-title mb-3">
+            <span class="hero-title-line">تماس با ما</span>
+            <span class="hero-title-line gold">مشاوره و ثبت سفارش</span>
+        </h1>
+        <p class="hero-subtitle mx-auto mb-4">برای دریافت مشاوره، استعلام شرایط دوخت یا ثبت سفارش، از طریق تماس تلفنی یا پیام در بله با مزون نارشا در ارتباط باشید.</p>
+        <div class="hero-buttons d-flex flex-wrap justify-content-center gap-3 mt-4 mb-0">
+            <a href="#contact" class="btn btn-gold">راه‌های ارتباطی <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg></a>
+            <a href="@SiteContact.BaleUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold">پیام در بله <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
+        </div>
+    </div>
+</section>
+<section class="py-5" id="contact" aria-labelledby="contact-hero-title">
+    <div class="container">
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-sm-6 d-flex">
+                        <a href="@SiteContact.TelHref" class="contact-card d-flex flex-column align-items-center text-center h-100 w-100 p-4 reveal-element" aria-label="تماس تلفنی با مزون نارشا — @SiteContact.PhoneDisplayFa"><div class="contact-card-icon d-flex align-items-center justify-content-center mb-3" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" /></svg></div><h3 class="h5 mb-1">تماس تلفنی</h3><p class="contact-value mb-2" dir="ltr">@SiteContact.PhoneDisplay</p><span class="contact-action">تماس مستقیم ←</span></a>
+                    </div>
+                    <div class="col-sm-6 d-flex">
+                        <a href="@SiteContact.BaleUrl" class="contact-card d-flex flex-column align-items-center text-center h-100 w-100 p-4 reveal-element" target="_blank" rel="noopener noreferrer" aria-label="ارسال پیام در بله به مزون نارشا"><div class="contact-card-icon whatsapp d-flex align-items-center justify-content-center mb-3" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#00B894" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div><h3 class="h5 mb-1">پیام در بله</h3><p class="contact-value mb-2" dir="ltr">@SiteContact.PhoneDisplay</p><span class="contact-action">ارسال پیام و عکس مدل ←</span></a>
+                    </div>
+                    <div class="col-sm-6 d-flex">
+                        <a href="@SiteContact.InstagramUrl" class="contact-card d-flex flex-column align-items-center text-center h-100 w-100 p-4 reveal-element instagram" target="_blank" rel="noopener noreferrer" aria-label="صفحه اینستاگرام مزون نارشا"><div class="contact-card-icon instagram d-flex align-items-center justify-content-center mb-3" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="5" /><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" /></svg></div><h3 class="h5 mb-1">اینستاگرام</h3><p class="contact-value mb-2">@SiteContact.InstagramHandle</p><span class="contact-action">مشاهده ←</span></a>
+                    </div>
+                    <div class="col-sm-6 d-flex">
+                        <div class="contact-card d-flex flex-column align-items-center text-center h-100 w-100 p-4 reveal-element"><div class="contact-card-icon d-flex align-items-center justify-content-center mb-3" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" /></svg></div><h3 class="h5 mb-1">آدرس مزون</h3><p class="contact-value mb-2">@SiteContact.Address</p><p class="contact-hours mb-0 mt-2">@SiteContact.Hours</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 d-flex">
+                <div class="contact-map w-100 reveal-element">
+                    <div class="map-placeholder" aria-label="موقعیت مزون نارشا روی نقشه در اردبیل">
+                        <iframe title="نقشه موقعیت مزون نارشا در اردبیل" src="@SiteContact.MapEmbedUrl" width="100%" height="100%" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

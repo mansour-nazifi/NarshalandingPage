@@ -1,0 +1,27 @@
+// Forms overrides (dark luxury theme)
+// Token values live in _variables.scss; these rules refine interaction states.
+
+.form-control,
+.form-select {
+  color-scheme: dark;
+}
+
+.form-control::placeholder {
+  color: $input-placeholder-color;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: $input-focus-border-color;
+  box-shadow: $input-focus-box-shadow;
+}
+
+.form-label {
+  color: $form-label-color;
+}
+
+.input-group-text {
+  background-color: $input-group-addon-bg;
+  border-color: $input-border-color;
+  color: $gray-light;
+}

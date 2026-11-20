@@ -1,0 +1,54 @@
+@model string
+@{
+    var active = Model ?? "";
+}
+<header class="site-header sticky-top" id="header">
+    <div class="top-banner" id="topBanner">
+        <a href="@(SiteRoutes.CustomSewing)" class="top-banner-link" aria-label="مشاوره و ثبت سفارش دوخت سفارشی">
+            <span class="top-banner-track" aria-hidden="true">
+                <span class="top-banner-text px-3">دوخت سفارشی متناسب با سلیقه شما</span>
+                <span class="top-banner-text px-3">مشاوره رایگان و ثبت سفارش — کلیک کنید</span>
+                <span class="top-banner-text px-3">دوخت سفارشی متناسب با سلیقه شما</span>
+            </span>
+            <span class="visually-hidden">دوخت سفارشی متناسب با سلیقه شما — مشاوره رایگان و ثبت سفارش</span>
+        </a>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark site-nav py-1" aria-label="منوی اصلی">
+        <div class="container">
+            <a href="@(SiteRoutes.Home)" class="navbar-brand logo p-0" aria-label="مزون نارشا - مزون و خیاطی اردبیل - صفحه اصلی">
+                <img src="@SiteConfig.LogoPath" class="logo-img" alt="لوگوی مزون نارشا — مزون و خیاطی تخصصی در اردبیل" width="80" height="80" loading="eager" fetchpriority="high" />
+                <span class="logo-wrapper">
+                    <span class="logo-text">
+                        <span class="logo-brand">نارشا</span>
+                        <span class="logo-tagline">مزون و خیاطی اردبیل</span>
+                    </span>
+                </span>
+            </a>
+
+            <button class="navbar-toggler p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#navList" aria-controls="navList" aria-label="باز کردن منو">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-end nav-menu" tabindex="-1" id="navList" aria-labelledby="navMenuTitle" data-bs-backdrop="true">
+                <div class="offcanvas-header p-3 px-4">
+                    <span class="offcanvas-title" id="navMenuTitle">
+                        <span class="logo-brand">نارشا</span>
+                        <span class="offcanvas-title-tagline">مزون و خیاطی اردبیل</span>
+                    </span>
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="بستن منو"></button>
+                </div>
+                <div class="offcanvas-body p-3 px-4 pb-4">
+                    <ul class="navbar-nav ms-auto">
+                        @foreach (var item in NarshaStaticSite.Data.SiteData.Nav)
+                        {
+                            var isActive = string.Equals(active, item.Href, StringComparison.OrdinalIgnoreCase);
+                            <li class="nav-item">
+                                <a href="@item.Href" class="nav-link py-2 px-3@(isActive?" active":"")"@(isActive ? " aria-current=\"page\"" : "")>@item.Title</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

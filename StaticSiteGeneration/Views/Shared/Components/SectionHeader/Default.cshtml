@@ -1,0 +1,11 @@
+@model NarshaStaticSite.Models.SectionHeaderData
+<div class="section-heading text-center mb-5">
+    <span class="section-tag d-inline-block mb-2">@Model.Tag</span>
+    <h2 id="@Model.TitleId" class="section-title mb-3">
+        @Model.Title
+        @if (!string.IsNullOrEmpty(Model.Gold)) { <span class="text-gold">@Model.Gold</span> }
+        @Model.TitleEnd
+    </h2>
+    <div class="section-line mx-auto mb-3" aria-hidden="true"></div>
+    @if (!string.IsNullOrEmpty(Model.Description)) { <p class="section-desc mx-auto mb-0">@Model.Description</p> }
+</div>
