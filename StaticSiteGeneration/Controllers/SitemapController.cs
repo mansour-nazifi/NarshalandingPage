@@ -15,7 +15,7 @@ public class SitemapController : Controller
 
         var urls = new List<XElement>
         {
-            SitemapUrl(ns, domain + "/", now, "weekly", "1.0"),
+            SitemapUrl(ns, domain, now, "weekly", "1.0"),
             SitemapUrl(ns, domain + "/faq", now, "monthly", "0.8"),
         };
 

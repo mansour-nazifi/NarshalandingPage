@@ -2,7 +2,7 @@
 @{
     var seo = Model?.Seo ?? new NarshaStaticSite.Models.SeoMeta("مزون نارشا", "", "/");
     var active = Model?.ActiveNav ?? "";
-    var canonical = NarshaStaticSite.Data.SiteData.Domain + seo.CanonicalPath;
+    var canonical = (NarshaStaticSite.Data.SiteData.Domain + seo.CanonicalPath).TrimEnd('/');
 }
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">

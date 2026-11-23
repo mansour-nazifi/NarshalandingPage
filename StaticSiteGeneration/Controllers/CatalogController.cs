@@ -37,8 +37,8 @@ public class CatalogController : Controller
         var keywords = c.SeoKeywords.Length > 0 ? c.SeoKeywords : null;
         var canonical = "/" + c.Slug;
         var items = string.Join(",", products.Select((p,i)=> $"{{\"@type\":\"ListItem\",\"position\":{i+1},\"name\":{J(p.Title)},\"url\":{J(SiteConfig.Domain+"/"+p.Slug)}}}"));
-        var coll = $"<script type=\"application/ld+json\">{{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":{J(title)},\"description\":{J(desc)},\"url\":{J(SiteConfig.Domain+canonical)},\"inLanguage\":\"fa-IR\",\"isPartOf\":{{\"@type\":\"WebSite\",\"name\":\"مزون نارشا\",\"url\":\"{SiteConfig.Domain}/\"}},\"mainEntity\":{{\"@type\":\"ItemList\",\"numberOfItems\":{products.Count},\"itemListElement\":[{items}]}},\"provider\":{{\"@id\":\"{SiteConfig.Domain}/#business\"}}}}</script>";
-        var bc = BreadcrumbLd(("صفحه اصلی","/"), (c.SingularName, canonical));
+        var coll = $"<script type=\"application/ld+json\">{{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":{J(title)},\"description\":{J(desc)},\"url\":{J(SiteConfig.Domain+canonical)},\"inLanguage\":\"fa-IR\",\"isPartOf\":{{\"@type\":\"WebSite\",\"name\":\"مزون نارشا\",\"url\":\"{SiteConfig.Domain}\"}},\"mainEntity\":{{\"@type\":\"ItemList\",\"numberOfItems\":{products.Count},\"itemListElement\":[{items}]}},\"provider\":{{\"@id\":\"{SiteConfig.Domain}/#business\"}}}}</script>";
+        var bc = BreadcrumbLd(("صفحه اصلی",""), (c.SingularName, canonical));
         return new SeoMeta(title, desc, canonical, keywords, "website", c.OgImage, title, coll+"\n"+bc);
     }
 
@@ -73,7 +73,7 @@ public class CatalogController : Controller
             ["areaServed"] = "IR"
         };
         var productJson = JsonSerializer.Serialize(productObj);
-        var bc = BreadcrumbLd(("صفحه اصلی","/"), (c.SingularName, "/"+c.Slug), (p.Title, canonical));
+        var bc = BreadcrumbLd(("صفحه اصلی",""), (c.SingularName, "/"+c.Slug), (p.Title, canonical));
         return new SeoMeta(title, desc, canonical, null, "website", SiteConfig.OgImageUrl, $"{p.Title} دوخت سفارشی در مزون نارشا اردبیل", $"<script type=\"application/ld+json\">{productJson}</script>\n"+bc);
     }
 
