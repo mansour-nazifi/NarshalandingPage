@@ -78,7 +78,7 @@ public class StaticSiteGenerationController : Controller
         var path = url.TrimEnd('/');
         if (path == "") return "index.html";
         if (path.Contains('.')) return path.TrimStart('/');
-        return path.TrimStart('/') + "/index.html";
+        return path.TrimStart('/') + ".html";
     }
 
     private static void CopyDirectory(string sourceDir, string targetDir)
