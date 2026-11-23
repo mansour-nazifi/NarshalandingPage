@@ -10,10 +10,10 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var seo = new SeoMeta(
-            "مزون نارشا اردبیل | دوخت سفارشی لباس زنانه، عروس، مجلسی و مانتو",
-            "مزون نارشا در اردبیل، تخصص در دوخت سفارشی لباس زنانه شامل لباس عروس، مجلسی، مانتو، کت، پالتو و پوشاک روزمره. سایزگیری دقیق، مشاوره انتخاب مدل و پارچه، پرداخت نقدی و اقساطی. تماس: " + SiteContact.PhoneDisplayFa,
+            "دوخت سفارشی لباس زنانه در اردبیل | مزون نارشا",
+            "مزون نارشا در اردبیل، ارائه‌دهنده دوخت سفارشی مانتو، کت، پالتو، شومیز، دامن، شلوار و لباس مجلسی. انتخاب مدل و پارچه، بررسی جزئیات سفارش و هماهنگی برای ثبت دوخت.",
             SiteRoutes.Home,
-            "مزون نارشا, مزون لباس زنانه اردبیل, دوخت سفارشی اردبیل, خیاطی زنانه اردبیل, لباس عروس اردبیل, لباس مجلسی اردبیل, مانتو سفارشی اردبیل, دوخت کت و پالتو زنانه, مزون نارشا اردبیل",
+            "مزون نارشا, دوخت سفارشی لباس زنانه اردبیل, مزون اردبیل, دوخت مانتو, دوخت کت و پالتو, دوخت شومیز, دوخت دامن و شلوار, لباس مجلسی سفارشی",
             "website",
             SiteConfig.OgImageUrl,
             "نمونه آثار دوخت سفارشی مزون نارشا در اردبیل",
@@ -38,15 +38,15 @@ public class HomeController : Controller
 
     private static string HomeJsonLd() =>
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"WebSite\",\"@id\":\"" + SiteConfig.Domain + "/#website\",\"url\":\"" + SiteConfig.Domain + "\",\"name\":\"مزون نارشا\",\"alternateName\":\"Narsha Atelier\",\"inLanguage\":\"fa-IR\"}</script>\n" +
-        "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"" + SiteConfig.Domain + "/#business\",\"name\":\"مزون نارشا\",\"alternateName\":\"مزون نارشا اردبیل\",\"description\":\"مزون نارشا در اردبیل، ارائه‌دهنده خدمات دوخت سفارشی و طراحی اختصاصی لباس زنانه شامل لباس عروس، لباس مجلسی و شب، مانتو، کت، پالتو، شومیز، دامن و شلوار با سایزگیری و فیتینگ تخصصی.\",\"url\":\"" + SiteConfig.Domain + "\",\"telephone\":\"" + SiteContact.Phone + "\",\"priceRange\":\"$$\",\"image\":\"" + SiteConfig.OgImageUrl + "\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"بلوار طلائیه، شهدا، پیام شرقی 3 (شهرک کشاورزی)\",\"addressLocality\":\"اردبیل\",\"addressRegion\":\"اردبیل\",\"addressCountry\":\"IR\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":\"38.210618\",\"longitude\":\"48.305364\"},\"openingHoursSpecification\":[{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Saturday\",\"Sunday\",\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\"],\"opens\":\"10:00\",\"closes\":\"20:00\"}],\"areaServed\":[{\"@type\":\"City\",\"name\":\"اردبیل\"},{\"@type\":\"Country\",\"name\":\"ایران\"}],\"sameAs\":[\"" + SiteContact.InstagramUrl + "\",\"" + SiteContact.BaleUrl + "\"]}</script>\n" +
+        "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"LocalBusiness\",\"@id\":\"" + SiteConfig.Domain + "/#business\",\"name\":\"مزون نارشا\",\"alternateName\":\"مزون نارشا اردبیل\",\"description\":\"مزون نارشا در اردبیل، ارائه‌دهنده خدمات دوخت سفارشی پوشاک زنانه شامل لباس مجلسی، مانتو، کت، پالتو، شومیز، دامن و شلوار.\",\"url\":\"" + SiteConfig.Domain + "\",\"telephone\":\"" + SiteContact.Phone + "\",\"image\":\"" + SiteConfig.OgImageUrl + "\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"بلوار طلائیه، شهدا، پیام شرقی 3 (شهرک کشاورزی)\",\"addressLocality\":\"اردبیل\",\"addressRegion\":\"اردبیل\",\"addressCountry\":\"IR\"},\"geo\":{\"@type\":\"GeoCoordinates\",\"latitude\":\"38.210618\",\"longitude\":\"48.305364\"},\"openingHoursSpecification\":[{\"@type\":\"OpeningHoursSpecification\",\"dayOfWeek\":[\"Saturday\",\"Sunday\",\"Monday\",\"Tuesday\",\"Wednesday\",\"Thursday\"],\"opens\":\"10:00\",\"closes\":\"20:00\"}],\"areaServed\":[{\"@type\":\"City\",\"name\":\"اردبیل\"},{\"@type\":\"Country\",\"name\":\"ایران\"}],\"sameAs\":[\"" + SiteContact.InstagramUrl + "\",\"" + SiteContact.BaleUrl + "\"]}</script>\n" +
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"صفحه اصلی\",\"item\":\"" + SiteConfig.Domain + "\"}]}</script>";
 
     [HttpGet(SiteRoutes.PaymentMethodsSegment)]
     public IActionResult PaymentMethods()
     {
         var seo = new SeoMeta(
-            "روش‌های پرداخت | مزون نارشا اردبیل",
-            "روش‌های پرداخت در مزون نارشا اردبیل: امکان تسویه نقدی با تخفیف یا پرداخت اقساطی مرحله‌ای. برای جزئیات نهایی با مزون در تماس باشید.",
+            "روش‌های پرداخت سفارش دوخت | مزون نارشا اردبیل",
+            "شرایط پرداخت سفارش دوخت در مزون نارشا اردبیل: پرداخت نقدی با ۵٪ تخفیف یا تسویه اقساطی در ۲ تا ۴ مرحله طبق شرایط سفارش. جزئیات را هنگام هماهنگی بپرسید.",
             SiteRoutes.PaymentMethods,
             "روش‌های پرداخت مزون نارشا, پرداخت اقساطی مزون, پرداخت نقدی مزون, مزون نارشا اردبیل",
             "website", SiteConfig.OgImageUrl, null, PaymentMethodsJsonLd());
@@ -61,8 +61,8 @@ public class HomeController : Controller
         var items = SiteData.GlobalFaq();
         var json = FaqJsonLd(items);
         var seo = new SeoMeta(
-            "دوخت سفارشی لباس زنانه | مزون نارشا اردبیل",
-            "راهنمای دوخت سفارشی در مزون نارشا اردبیل: نکات انتخاب پارچه و تناسب، رویکرد مزون در دوخت سفارشی، و روند مرحله‌ای ثبت و اجرای سفارش. پاسخ به سوالات متداول درباره زمان، هزینه، پارچه و شرایط دوخت.",
+            "راهنمای دوخت سفارشی لباس زنانه | مزون نارشا اردبیل",
+            "راهنمای سفارش دوخت سفارشی در اردبیل: انتخاب مدل و پارچه، اندازه‌گیری، تأمین ملزومات و مراحل ثبت سفارش در مزون نارشا.",
             SiteRoutes.CustomSewing,
             "دوخت سفارشی مزون نارشا, راهنمای دوخت سفارشی, مزون نارشا اردبیل, دوخت لباس زنانه سفارشی, سوالات متخصص دوخت سفارشی",
             "website", SiteConfig.OgImageUrl, null, json);
@@ -75,8 +75,8 @@ public class HomeController : Controller
     public IActionResult ContactUs()
     {
         var seo = new SeoMeta(
-            "تماس با ما | مزون نارشا اردبیل",
-            "تماس با مزون نارشا در اردبیل: مشاوره و ثبت سفارش دوخت سفارشی لباس زنانه از طریق تماس تلفنی، پیام در بله، اینستاگرام یا مراجعه حضوری.",
+            "تماس با مزون نارشا | آدرس و ثبت سفارش در اردبیل",
+            "راه‌های تماس با مزون نارشا در اردبیل؛ برای پرسش درباره مدل، پارچه و شرایط دوخت با تلفن، بله یا اینستاگرام پیام دهید یا آدرس و ساعت کاری را ببینید.",
             SiteRoutes.ContactUs,
             "تماس با مزون نارشا, آدرس مزون نارشا, شماره مزون نارشا, مزون نارشا اردبیل",
             "website", SiteConfig.OgImageUrl, null, ContactUsJsonLd());

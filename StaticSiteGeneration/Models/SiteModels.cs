@@ -60,7 +60,7 @@ public sealed class Product
     public string HeroDescription { get; init; } = "";
     public string FeatureText { get; init; } = "";
     public string FitText { get; init; } = "";
-    public string TimeText { get; init; } = "بسته به جزئیات مدل و نوع پارچه، زمان آماده‌سازی معمولاً بین ۷ تا ۱۵ روز کاری است.";
+    public string TimeText { get; init; } = "زمان آماده‌سازی پس از بررسی مدل، پارچه و جزئیات سفارش اعلام می‌شود.";
     public string MaterialsText { get; init; } = "پارچه، آستر (در صورت نیاز)، دکمه، زیپ، نخ و سایر خرج‌کارها بر عهده مشتری است.";
     public List<PriceOption> Options { get; init; } = new();
     public List<FaqItem> Faqs { get; init; } = new();

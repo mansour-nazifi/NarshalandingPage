@@ -31,7 +31,7 @@
         </h1>
         <p class="hero-subtitle mx-auto mb-4">@c.HeroSubtitle</p>
         <div class="hero-buttons d-flex flex-wrap justify-content-center gap-3 mt-4 mb-0">
-            <a href="#products" class="btn btn-gold">مشاهده مدل‌های @c.SingularName</a>
+            <a href="#products" class="btn btn-gold">دیدن مدل‌های @c.SingularName</a>
             <a href="@SiteContact.BaleUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold category-bale-btn" data-category="@c.SingularName">مشاوره در بله <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
         </div>
     </div>
@@ -70,7 +70,7 @@
         <h2 id="category-info-title" class="info-section-title d-flex align-items-center gap-3 mb-4">نکات مهم پیش از سفارش @c.SingularName</h2>
         @await Component.InvokeAsync("InfoList", c.ImportantNotes)
         <div class="mt-4">
-            <p class="text-secondary mb-2">سایر دسته‌های دوخت سفارشی:</p>
+            <p class="text-secondary mb-2">دسته‌های دیگر دوخت سفارشی:</p>
             <div class="d-flex flex-wrap gap-2">
                 @foreach (var oc in otherCats)
                 {
@@ -91,7 +91,7 @@
 
 <section class="py-5" id="cta" aria-labelledby="cta-title">
     <div class="container cta-section text-center mx-auto">
-        <h2 id="cta-title" class="section-title mb-3">@c.CtaTitle <span class="text-gold">مشاوره بگیرید</span></h2>
+        <h2 id="cta-title" class="section-title mb-3">@c.CtaTitle <span class="text-gold">برای جزئیات سفارش</span></h2>
         <div class="section-line mx-auto mb-3" aria-hidden="true"></div>
         <p class="cta-section-desc mb-4">@c.CtaDesc</p>
         <div class="d-flex gap-3 justify-content-center flex-wrap">

@@ -9,13 +9,13 @@
 <section class="category-hero position-relative d-flex align-items-center py-5" aria-labelledby="payment-hero-title">
     <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
     <div class="container position-relative text-center">
-        <span class="hero-badge d-inline-block mb-4 py-2 px-3" aria-hidden="true">پرداخت در مزون نارشا</span>
+        <span class="hero-badge d-inline-block mb-4 py-2 px-3" aria-hidden="true">شرایط پرداخت سفارش دوخت</span>
         <h1 id="payment-hero-title" class="hero-title mb-3">
             <span class="hero-title-line gold">روش‌های پرداخت</span>
         </h1>
-        <p class="hero-subtitle mx-auto mb-4">برای سهولت ثبت سفارش، امکان تسویه به‌صورت نقدی یا اقساطی فراهم است. جزئیات نهایی بر اساس نوع سفارش در زمان هماهنگی اعلام می‌شود.</p>
+        <p class="hero-subtitle mx-auto mb-4">برای سفارش‌های دوخت، امکان پرداخت نقدی یا مرحله‌ای در نظر گرفته شده است. جزئیات مبلغ و زمان‌بندی پرداخت با توجه به نوع سفارش هنگام هماهنگی مشخص می‌شود.</p>
         <div class="hero-buttons d-flex flex-wrap justify-content-center gap-3 mt-4 mb-0">
-            <a href="#payment" class="btn btn-gold">مشاهده روش‌های پرداخت <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg></a>
+            <a href="#payment" class="btn btn-gold">بررسی روش‌های پرداخت <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg></a>
             <a href="@SiteContact.BaleUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold">مشاوره در بله <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
         </div>
     </div>
@@ -25,7 +25,7 @@
         @await Component.InvokeAsync("PaymentGrid", NarshaStaticSite.Data.HomeData.PaymentCards())
         <div class="payment-note d-flex align-items-center mt-5 mx-auto p-4 reveal-element">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" class="text-gold"><circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" /></svg>
-            <p class="mb-0">برای آگاهی از جزئیات پرداخت، از طریق تماس تلفنی یا پیام در بله با مزون نارشا در ارتباط باشید.</p>
+            <p class="mb-0">برای اطلاع از مبلغ پیش‌پرداخت و برنامه تسویه متناسب با سفارش خود، با مزون نارشا تماس بگیرید یا در بله پیام دهید.</p>
         </div>
     </div>
 </section>

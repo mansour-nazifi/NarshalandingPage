@@ -39,13 +39,13 @@ public class CatalogController : Controller
         var items = string.Join(",", products.Select((p,i)=> $"{{\"@type\":\"ListItem\",\"position\":{i+1},\"name\":{J(p.Title)},\"url\":{J(SiteConfig.Domain+"/"+p.Slug)}}}"));
         var coll = $"<script type=\"application/ld+json\">{{\"@context\":\"https://schema.org\",\"@type\":\"CollectionPage\",\"name\":{J(title)},\"description\":{J(desc)},\"url\":{J(SiteConfig.Domain+canonical)},\"inLanguage\":\"fa-IR\",\"isPartOf\":{{\"@type\":\"WebSite\",\"name\":\"مزون نارشا\",\"url\":\"{SiteConfig.Domain}\"}},\"mainEntity\":{{\"@type\":\"ItemList\",\"numberOfItems\":{products.Count},\"itemListElement\":[{items}]}},\"provider\":{{\"@id\":\"{SiteConfig.Domain}/#business\"}}}}</script>";
         var bc = BreadcrumbLd(("صفحه اصلی",""), (c.SingularName, canonical));
-        return new SeoMeta(title, desc, canonical, keywords, "website", c.OgImage, title, coll+"\n"+bc);
+        return new SeoMeta(title, desc, canonical, keywords, "website", SiteConfig.Domain + c.Image, title, coll+"\n"+bc);
     }
 
     private static SeoMeta BuildProductSeo(Category c, Product p)
     {
         var title = $"دوخت {p.Title} سفارشی در اردبیل | مزون نارشا";
-        var desc = $"سفارش دوخت {p.Title} در مزون نارشا اردبیل با الگوی اختصاصی و دوخت تمیز. " + (p.Options.Count>0 ? "امکان انتخاب گزینه‌های مربوطه در محاسبه هزینه. " : "قیمت پایه دوخت مشخص و بدون گزینه اضافه. ") + "پارچه و ملزومات با مشتری است.";
+        var desc = Shorten($"دوخت سفارشی {p.Title} در مزون نارشا اردبیل. {p.HeroDescription}", 160);
         var canonical = "/" + p.Slug;
         var optDesc = BuildOptionDesc(p);
         var fullDesc = p.HeroDescription + " " + optDesc;
@@ -53,28 +53,25 @@ public class CatalogController : Controller
         var productObj = new Dictionary<string, object?>
         {
             ["@context"] = "https://schema.org",
-            ["@type"] = "Product",
+            ["@type"] = "Service",
             ["name"] = p.Title,
             ["description"] = fullDesc,
             ["image"] = SiteConfig.Domain + p.Image,
-            ["sku"] = p.Slug,
-            ["category"] = c.SingularName,
-            ["brand"] = new Dictionary<string, object?> { ["@type"] = "Brand", ["name"] = SiteConfig.SiteName },
+            ["serviceType"] = $"دوخت سفارشی {c.SingularName}",
             ["provider"] = new Dictionary<string, object?> { ["@id"] = SiteConfig.Domain + "/#business" },
+            ["areaServed"] = new Dictionary<string, object?> { ["@type"] = "Country", ["name"] = "ایران" },
             ["offers"] = new Dictionary<string, object?>
             {
                 ["@type"] = "Offer",
-                ["price"] = p.BasePrice.ToString(),
+                ["price"] = p.BasePrice * 10,
                 ["priceCurrency"] = "IRR",
-                ["availability"] = "https://schema.org/InStock",
                 ["url"] = SiteConfig.Domain + canonical,
                 ["description"] = offerDesc
-            },
-            ["areaServed"] = "IR"
+            }
         };
         var productJson = JsonSerializer.Serialize(productObj);
         var bc = BreadcrumbLd(("صفحه اصلی",""), (c.SingularName, "/"+c.Slug), (p.Title, canonical));
-        return new SeoMeta(title, desc, canonical, null, "website", SiteConfig.OgImageUrl, $"{p.Title} دوخت سفارشی در مزون نارشا اردبیل", $"<script type=\"application/ld+json\">{productJson}</script>\n"+bc);
+        return new SeoMeta(title, desc, canonical, null, "website", SiteConfig.Domain + p.Image, $"{p.Title} دوخت سفارشی در مزون نارشا اردبیل", $"<script type=\"application/ld+json\">{productJson}</script>\n"+bc);
     }
 
     private static string BuildOptionDesc(Product p)
@@ -92,4 +89,11 @@ public class CatalogController : Controller
     }
 
     private static string J(string s) => JsonSerializer.Serialize(s);
+
+    private static string Shorten(string text, int maxLength)
+    {
+        if (text.Length <= maxLength) return text;
+        var boundary = text.LastIndexOf(' ', maxLength - 1);
+        return text[..(boundary > 0 ? boundary : maxLength)].TrimEnd('،', '.', ' ') + "…";
+    }
 }

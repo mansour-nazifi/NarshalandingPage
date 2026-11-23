@@ -9,12 +9,12 @@
 <section class="category-hero position-relative d-flex align-items-center py-5" aria-labelledby="custom-sewing-hero-title">
     <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
     <div class="container position-relative text-center">
-        <span class="hero-badge d-inline-block mb-4 py-2 px-3" aria-hidden="true">مزون نارشا • اردبیل</span>
+        <span class="hero-badge d-inline-block mb-4 py-2 px-3" aria-hidden="true">مزون دوخت سفارشی نارشا • اردبیل</span>
         <h1 id="custom-sewing-hero-title" class="hero-title mb-3">
             <span class="hero-title-line">دوخت سفارشی لباس زنانه</span>
-            <span class="hero-title-line gold">راهنما، رویکرد و روند سفارش</span>
+            <span class="hero-title-line gold">از انتخاب مدل تا تحویل سفارش</span>
         </h1>
-        <p class="hero-subtitle mx-auto mb-4">از انتخاب پارچه و تناسب اندام تا مراحل اجرا و تحویل، با آگاهی کامل سفارش دوخت سفارشی خود را ثبت کنید.</p>
+        <p class="hero-subtitle mx-auto mb-4">با مدل‌های قابل سفارش، نکات انتخاب پارچه و روند ثبت سفارش آشنا شوید؛ برای بررسی جزئیات و برآورد هزینه، اطلاعات مدل و پارچه را با مزون هماهنگ کنید.</p>
         <div class="hero-buttons d-flex flex-wrap justify-content-center gap-3 mt-4 mb-0">
             <a href="#guidance" class="btn btn-gold">مشاهده راهنما <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg></a>
             <a href="@SiteContact.BaleUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold">مشاوره در بله <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
@@ -29,9 +29,9 @@
     <div class="container">
         @await Component.InvokeAsync("SectionHeader", new NarshaStaticSite.Models.SectionHeaderData(
             "راهنمای دوخت سفارشی",
-            "پیش از ثبت سفارش",
-            "چه نکاتی را بدانیم",
-            Description: "برای رسیدن به لباسی که هم خوش‌فرم بنشیند و هم مطابق سلیقه شما باشد، چند نکته کلیدی درباره انتخاب پارچه، فرم اندام و فرآیند سفارش را بدانید.",
+            "راهنمای ثبت سفارش",
+            "پیش از شروع دوخت",
+            Description: "مدل لباس، ویژگی‌های پارچه، اندازه‌گیری و اقلام موردنیاز، همگی در برنامه‌ریزی سفارش نقش دارند. این نکات را پیش از هماهنگی در نظر بگیرید.",
             TitleId: "guidance-title"))
         @await Component.InvokeAsync("InfoList", new List<NarshaStaticSite.Models.InfoItem>
         {
@@ -50,7 +50,7 @@
             "چرا مزون نارشا",
             "آنچه در دوخت سفارشی",
             "برای ما مهم است",
-            Description: "دوخت سفارشی فقط انتخاب یک مدل نیست؛ نتیجه نهایی به اندازه‌گیری درست، الگوی متناسب، انتخاب پارچه و دقت در اجرا وابسته است.",
+            Description: "پیش از شروع دوخت، مدل، اندازه‌ها، جنس پارچه و جزئیات اجرایی سفارش بررسی می‌شوند تا محدوده کار و هزینه روشن باشد.",
             TitleId: "why-choose-title"))
         @await Component.InvokeAsync("ServiceCardList", new { items = NarshaStaticSite.Data.HomeData.WhyChoose(), numbered = false })
     </div>
@@ -64,7 +64,7 @@
             "مسیر",
             "دوخت سفارشی",
             TitleEnd: "در مزون نارشا",
-            Description: "فرآیند سفارش به‌صورت مرحله‌ای و شفاف انجام می‌شود تا نتیجه نهایی متناسب با انتظار و اندام شما باشد.",
+            Description: "روند سفارش از مشاوره و بررسی جزئیات آغاز می‌شود؛ زمان آماده‌سازی و شیوه تحویل نیز هنگام ثبت سفارش هماهنگ خواهد شد.",
             TitleId: "process-title"))
         @await Component.InvokeAsync("ServiceCardList", new { items = NarshaStaticSite.Data.HomeData.ProcessSteps(), numbered = true })
     </div>
@@ -72,8 +72,8 @@
 
 @{
     var faqHeader = new NarshaStaticSite.Models.SectionHeaderData(
-        "سوال‌های رایج",
-        "پرسش‌های متداول درباره",
+        "راهنمای سفارش",
+        "پاسخ به پرسش‌های",
         "دوخت سفارشی",
         TitleId: "faq-title");
 }

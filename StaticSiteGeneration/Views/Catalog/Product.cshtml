@@ -56,10 +56,10 @@
                                 <span class="price-value price-total-value">@NarshaStaticSite.Models.PriceFormat.Toman(p.BasePrice)</span>
                             </div>
                         </div>
-                        <p class="price-disclaimer mb-0 mt-3 p-3">قیمت‌های درج‌شده هزینه شروع دوخت هستند و شامل قیمت پارچه, آستر و ملزومات نمی‌شوند. تهیه پارچه و لوازم برعهده مشتری است. هزینه نهایی پس از بررسی سفارش اعلام می‌شود.</p>
+                        <p class="price-disclaimer mb-0 mt-3 p-3">مبالغ درج‌شده، هزینه پایه دوخت هستند و قیمت پارچه، آستر و ملزومات را شامل نمی‌شوند. تهیه اقلام موردنیاز بر عهده مشتری است؛ هزینه نهایی پس از بررسی جزئیات سفارش اعلام می‌شود.</p>
                     </div>
                     <a href="@SiteContact.BaleUrl" target="_blank" rel="noopener noreferrer" class="btn btn-bale d-inline-flex align-items-center justify-content-center gap-3 w-100 mt-2 py-3 px-4">
-                        مشاوره و استعلام قیمت در بله
+                        مشاوره و بررسی هزینه در بله
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
                     </a>
                 </div>
@@ -69,13 +69,13 @@
 </section>
 <section class="py-5 section-dark" id="price-factors" aria-labelledby="price-factors-title">
     <div class="container">
-        <h2 id="price-factors-title" class="info-section-title d-flex align-items-center gap-3 mb-4">پیش از سفارش @p.Title</h2>
+        <h2 id="price-factors-title" class="info-section-title d-flex align-items-center gap-3 mb-4">جزئیات دوخت و سفارش @p.Title</h2>
         @await Component.InvokeAsync("InfoList", new List<NarshaStaticSite.Models.InfoItem>
         {
             new("ویژگی مدل", p.FeatureText),
-            new("تناسب اندام و برش", p.FitText),
+            new("فیت و برش لباس", p.FitText),
             new("زمان آماده‌سازی", p.TimeText),
-            new("پارچه، ملزومات و گزینه‌ها", p.MaterialsText + " " + ProductFaqFactory.OptionDescription(p)),
+            new("پارچه، ملزومات و گزینه‌های دوخت", p.MaterialsText + " " + ProductFaqFactory.OptionDescription(p)),
         })
     </div>
 </section>
@@ -109,9 +109,9 @@
 }
 <section class="py-5@(Model.Related.Count > 0 ? "" : " section-dark")" id="cta" aria-labelledby="cta-title">
     <div class="container cta-section text-center mx-auto">
-        <h2 id="cta-title" class="section-title mb-3">برای سفارش @p.Title <span class="text-gold">مشاوره بگیرید</span></h2>
+        <h2 id="cta-title" class="section-title mb-3">سفارش @p.Title <span class="text-gold">با هماهنگی جزئیات</span></h2>
         <div class="section-line mx-auto mb-3" aria-hidden="true"></div>
-        <p class="cta-section-desc mb-4">تصویر پارچه، سایزها و جزئیات موردنظر خود را ارسال کنید تا شرایط دوخت و برآورد نهایی سفارش بررسی شود.</p>
+        <p class="cta-section-desc mb-4">برای بررسی مدل، پارچه و اندازه‌ها پیام دهید تا امکان اجرا و هزینه نهایی سفارش هماهنگ شود.</p>
         <a href="@SiteContact.BaleUrl" target="_blank" rel="noopener noreferrer" class="btn btn-gold px-5">مشاوره در بله <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
     </div>
 </section>
