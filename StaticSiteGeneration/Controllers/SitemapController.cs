@@ -16,7 +16,10 @@ public class SitemapController : Controller
         var urls = new List<XElement>
         {
             SitemapUrl(ns, domain, now, "weekly", "1.0"),
-            SitemapUrl(ns, domain + "/faq", now, "monthly", "0.8"),
+            SitemapUrl(ns, domain + SiteRoutes.Faq, now, "monthly", "0.8"),
+            SitemapUrl(ns, domain + SiteRoutes.CustomSewing, now, "monthly", "0.8"),
+            SitemapUrl(ns, domain + SiteRoutes.PaymentMethods, now, "yearly", "0.5"),
+            SitemapUrl(ns, domain + SiteRoutes.ContactUs, now, "yearly", "0.5"),
         };
 
         foreach (var c in SiteData.Categories())
