@@ -15,6 +15,9 @@ public static class SiteRoutes
     public const string PaymentMethodsSegment = "payment-methods";
     public const string CustomSewingSegment = "custom-sewing";
     public const string ContactUsSegment = "contact-us";
+
+    public const string NotFound = "/404";
+    public const string NotFoundSegment = "404";
 }
 
 public static class SiteContact

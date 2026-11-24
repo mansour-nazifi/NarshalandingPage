@@ -1,0 +1,23 @@
+@model NarshaStaticSite.ViewModels.NotFoundPageViewModel
+<div class="container">
+    @await Component.InvokeAsync("Breadcrumb", new List<BreadcrumbItem>
+    {
+        new BreadcrumbItem("صفحه اصلی", SiteRoutes.Home),
+        new BreadcrumbItem("صفحه پیدا نشد")
+    })
+</div>
+<section class="category-hero position-relative d-flex align-items-center py-5" aria-labelledby="notfound-hero-title">
+    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
+    <div class="container position-relative text-center">
+        <span class="hero-badge d-inline-block mb-4 py-2 px-3" aria-hidden="true">خطای ۴۰۴ — صفحه پیدا نشد</span>
+        <h1 id="notfound-hero-title" class="hero-title mb-3">
+            <span class="hero-title-line">۴۰۴</span>
+            <span class="hero-title-line gold">صفحه مورد نظر وجود ندارد</span>
+        </h1>
+        <p class="hero-subtitle mx-auto mb-4">متأسفانه، صفحه‌ای که می‌خواهید در سایت مزون نارشا وجود ندارد یا آدرس آن اشتباه است. می‌توانید به صفحه اصلی بازگردید یا با ما تماس بگیرید.</p>
+        <div class="hero-buttons d-flex flex-wrap justify-content-center gap-3 mt-4 mb-0">
+            <a href="/" class="btn btn-gold">بازگشت به صفحه اصلی <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9" /></svg></a>
+            <a href="@SiteContact.BaleUrl" target="_blank" rel="noopener noreferrer" class="btn btn-outline-gold">پیام در بله <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></a>
+        </div>
+    </div>
+</section>

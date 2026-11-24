@@ -17,7 +17,8 @@ public sealed record SeoMeta(
     string? OgType = null,
     string? OgImage = null,
     string? OgImageAlt = null,
-    string? JsonLd = null
+    string? JsonLd = null,
+    string? Robots = null
 );
 
 public sealed class Category

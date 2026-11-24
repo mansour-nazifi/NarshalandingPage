@@ -85,6 +85,23 @@ public class HomeController : Controller
 
     private static string ContactUsJsonLd() => BreadcrumbJsonLd("تماس با ما", SiteRoutes.ContactUs);
 
+    [HttpGet(SiteRoutes.NotFoundSegment)]
+    public IActionResult NotFoundPage()
+    {
+        var seo = new SeoMeta(
+            "صفحه پیدا نشد (۴۰۴) | مزون نارشا",
+            "صفحه مورد نظر یافت نشد. بازگشت به صفحه اصلی مزون نارشا در اردبیل.",
+            SiteRoutes.NotFound,
+            "صفحه ۴۰۴ مزون نارشا, صفحه پیدا نشد, مزون نارشا اردبیل",
+            "website", SiteConfig.OgImageUrl, null, NotFoundJsonLd(), "noindex, nofollow"
+        );
+        return View("NotFound", new NotFoundPageViewModel { Seo = seo, ActiveNav = "" });
+    }
+
+    private static string NotFoundJsonLd() =>
+        "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"صفحه اصلی\",\"item\":\"" + SiteConfig.Domain + "\"}]}</script>";
+
+
     private static string BreadcrumbJsonLd(string name, string path) =>
         "<script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"name\":\"صفحه اصلی\",\"item\":\"" + SiteConfig.Domain + "\"},{\"@type\":\"ListItem\",\"position\":2,\"name\":\"" + name + "\",\"item\":\"" + SiteConfig.Domain + path + "\"}]}</script>";
 

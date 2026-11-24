@@ -23,6 +23,8 @@ public sealed class CustomSewingPageViewModel : LayoutViewModel { }
 
 public sealed class ContactUsPageViewModel : LayoutViewModel { }
 
+public sealed class NotFoundPageViewModel : LayoutViewModel { }
+
 public sealed class CategoryPageViewModel : LayoutViewModel
 {
     public Category Category { get; set; } = new();

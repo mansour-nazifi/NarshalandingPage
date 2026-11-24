@@ -14,7 +14,7 @@
     <meta name="description" content="@seo.Description">
     @if (!string.IsNullOrWhiteSpace(seo.Keywords)) { <meta name="keywords" content="@seo.Keywords"> }
     <meta name="author" content="مزون نارشا">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="robots" content="@(string.IsNullOrWhiteSpace(seo.Robots) ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" : seo.Robots)">
     <link rel="canonical" href="@canonical">
     <link rel="alternate" href="@canonical" hreflang="fa-ir">
     <meta property="og:locale" content="fa_IR">

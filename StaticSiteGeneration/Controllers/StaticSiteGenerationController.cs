@@ -34,6 +34,7 @@ public class StaticSiteGenerationController : Controller
             SiteRoutes.PaymentMethods,
             SiteRoutes.CustomSewing,
             SiteRoutes.ContactUs,
+            SiteRoutes.NotFound,
             SiteRoutes.Sitemap,
             SiteRoutes.Robots
         };
