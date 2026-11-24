@@ -169,8 +169,29 @@
         });
     }
 
-    /* =================== INITIALIZE =================== */
+    /* =================== HERO CATEGORY SCROLL =================== */
+    function setupHeroCatScroll() {
+        var track = document.getElementById('heroCatTrack');
+        if (!track) return;
+        var slider = track.parentElement;
+        var prev = slider.querySelector('.hero-cat-prev');
+        var next = slider.querySelector('.hero-cat-next');
+        function itemWidth() {
+            var item = track.querySelector('.hero-cat-item');
+            return item ? item.offsetWidth + 12 : 0;
+        }
+        function updateButtons() {
+            var canScroll = track.scrollWidth > track.clientWidth + 1;
+            prev.style.display = canScroll ? '' : 'none';
+            next.style.display = canScroll ? '' : 'none';
+        }
+        if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -itemWidth(), behavior: 'smooth' }); });
+        if (next) next.addEventListener('click', function () { track.scrollBy({ left: itemWidth(), behavior: 'smooth' }); });
+        window.addEventListener('resize', updateButtons);
+        updateButtons();
+    }
     function init() {
+        setupHeroCatScroll();
         setupPortfolioLightbox();
         setupRevealObserver();
         handleHeaderScroll();

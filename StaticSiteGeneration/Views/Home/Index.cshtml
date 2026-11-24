@@ -6,7 +6,7 @@
     <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100"></div>
     <div class="container position-relative">
         <div class="row align-items-center gy-5">
-            <div class="col-lg-7 hero-text text-center text-lg-start px-3 px-lg-0">
+            <div class="col-lg-6 hero-text text-center text-lg-start px-3 px-lg-0">
                 <span class="hero-badge d-inline-block mb-4 py-2 px-3" aria-hidden="true">مزون دوخت سفارشی نارشا • اردبیل</span>
                 <h1 id="hero-title" class="hero-title mb-4">
                     <span class="hero-title-line">دوخت سفارشی لباس زنانه</span>
@@ -20,11 +20,25 @@
                     <a href="@SiteRoutes.CustomSewing" class="btn btn-outline-gold">دوخت سفارشی <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" /></svg></a>
                 </div>
             </div>
-            <div class="col-lg-5 hero-visual d-flex align-items-center justify-content-center">
-                <div class="hero-image-wrapper position-relative overflow-hidden">
-                    <img src="/images/hero-2.webp" alt="نمونه لباس زنانه دوخته‌شده به‌صورت سفارشی در مزون نارشا اردبیل" class="hero-image" width="800" height="1200" loading="eager" fetchpriority="high">
-                    <div class="hero-image-frame"></div>
-                    <div class="hero-image-glow"></div>
+            <div class="col-lg-6 hero-visual d-flex align-items-center justify-content-center">
+                <div class="hero-cat-scroll position-relative w-100">
+                    <div class="hero-cat-track d-flex overflow-auto" id="heroCatTrack">
+                        @foreach (var c in NarshaStaticSite.Data.SiteData.Categories())
+                        {
+                            <div class="hero-cat-item">
+                                <article class="card narsha-card h-100 position-relative">
+                                    <div class="card-image-wrap">
+                                        <img src="@c.Image" alt="دوخت سفارشی @c.SingularName زنانه در مزون نارشا اردبیل" class="card-img-top img-fluid w-100" width="400" height="533" loading="lazy">
+                                    </div>
+                                    <div class="card-body d-flex flex-column">
+                                        <h3 class="card-title h5 mb-0"><a href="/@c.Slug" class="stretched-link text-reset text-decoration-none">@c.SingularName</a></h3>
+                                    </div>
+                                </article>
+                            </div>
+                        }
+                    </div>
+                    <button class="hero-cat-prev" type="button" aria-label="قبلی"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6" /></svg></button>
+                    <button class="hero-cat-next" type="button" aria-label="بعدی"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6" /></svg></button>
                 </div>
             </div>
         </div>
