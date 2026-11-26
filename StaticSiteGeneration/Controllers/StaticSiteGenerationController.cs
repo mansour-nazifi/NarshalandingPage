@@ -1,3 +1,7 @@
+using Amazon.Runtime;
+using Amazon.S3;
+using Amazon.S3.Model;
+using System.Collections.Concurrent;
 using Microsoft.AspNetCore.Mvc;
 using NarshaStaticSite.Data;
 using System.Net;
@@ -9,11 +13,13 @@ public class StaticSiteGenerationController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly IWebHostEnvironment _env;
+    private readonly IConfiguration _config;
 
-    public StaticSiteGenerationController(IHttpClientFactory httpClientFactory, IWebHostEnvironment env)
+    public StaticSiteGenerationController(IHttpClientFactory httpClientFactory, IWebHostEnvironment env, IConfiguration config)
     {
         _httpClientFactory = httpClientFactory;
         _env = env;
+        _config = config;
     }
 
     [HttpGet("generate-static")]
@@ -71,6 +77,113 @@ public class StaticSiteGenerationController : Controller
             baseUrl = baseUrlVal,
             pagesGenerated = generated.Count,
             files = generated
+        });
+    }
+
+    [HttpGet("upload-html")]
+    public async Task<IActionResult> UploadHtml()
+    {
+        var section = _config.GetSection("ArvanStorage");
+        var endpoint = section["Endpoint"];
+        var accessKey = section["AccessKey"];
+        var secretKey = section["SecretKey"];
+        var bucketName = section["BucketName"];
+        var forcePathStyle = bool.TryParse(section["ForcePathStyle"], out var fps) && fps;
+
+        if (string.IsNullOrWhiteSpace(endpoint) ||
+            string.IsNullOrWhiteSpace(accessKey) ||
+            string.IsNullOrWhiteSpace(secretKey) ||
+            string.IsNullOrWhiteSpace(bucketName))
+        {
+            return BadRequest("ArvanStorage settings (Endpoint, AccessKey, SecretKey, BucketName) are required in appsettings.json.");
+        }
+
+        var outDir = Path.Combine(_env.ContentRootPath, "static-output");
+        if (!Directory.Exists(outDir))
+            return NotFound($"Output directory not found: {outDir}. Run /generate-static first.");
+
+        var htmlFiles = Directory.GetFiles(outDir, "*.html", SearchOption.AllDirectories);
+        if (htmlFiles.Length == 0)
+            return NotFound("No .html files found in static-output. Run /generate-static first.");
+
+        var s3Config = new AmazonS3Config
+        {
+            ServiceURL = endpoint,
+            ForcePathStyle = forcePathStyle
+        };
+
+        using var client = new AmazonS3Client(new BasicAWSCredentials(accessKey, secretKey), s3Config);
+
+        var keyByFile = htmlFiles.ToDictionary(
+            f => f,
+            f =>
+            {
+                var k = Path.GetRelativePath(outDir, f).Replace('\\', '/');
+                return k.EndsWith(".html", StringComparison.OrdinalIgnoreCase) ? k[..^".html".Length] : k;
+            });
+
+        var targetKeys = new HashSet<string>(keyByFile.Values, StringComparer.Ordinal);
+
+        var deletedKeys = new List<string>();
+        var listReq = new ListObjectsV2Request { BucketName = bucketName };
+        ListObjectsV2Response listResp;
+        do
+        {
+            listResp = await client.ListObjectsV2Async(listReq);
+            var toDelete = listResp.S3Objects
+                .Where(o => targetKeys.Contains(o.Key) ||
+                            o.Key.EndsWith(".html", StringComparison.OrdinalIgnoreCase))
+                .Select(o => new KeyVersion { Key = o.Key })
+                .ToList();
+            if (toDelete.Count > 0)
+            {
+                var deleteReq = new DeleteObjectsRequest
+                {
+                    BucketName = bucketName,
+                    Objects = toDelete
+                };
+                var deleteResp = await client.DeleteObjectsAsync(deleteReq);
+                deletedKeys.AddRange(deleteResp.DeletedObjects.Select(d => d.Key));
+            }
+            listReq.ContinuationToken = listResp.NextContinuationToken;
+        } while (listResp.IsTruncated == true);
+
+        var uploaded = new ConcurrentBag<string>();
+        var failed = new ConcurrentBag<object>();
+
+        await Parallel.ForEachAsync(htmlFiles, new ParallelOptions { MaxDegreeOfParallelism = 16 }, async (file, ct) =>
+        {
+            var key = keyByFile[file];
+            try
+            {
+                using var stream = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
+                var request = new PutObjectRequest
+                {
+                    BucketName = bucketName,
+                    Key = key,
+                    InputStream = stream,
+                    ContentType = "text/html; charset=utf-8",
+                    CannedACL = S3CannedACL.PublicRead,
+                    AutoCloseStream = false
+                };
+                await client.PutObjectAsync(request, ct);
+                uploaded.Add(key);
+            }
+            catch (Exception ex)
+            {
+                failed.Add(new { key, error = ex.Message });
+            }
+        });
+
+        return Ok(new
+        {
+            bucket = bucketName,
+            endpoint,
+            deletedCount = deletedKeys.Count,
+            uploadedCount = uploaded.Count,
+            failedCount = failed.Count,
+            uploaded,
+            failed
         });
     }
 
